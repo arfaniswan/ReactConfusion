@@ -27,7 +27,7 @@ renderComments(commentList) {
                 
          <li key={singlecomment.id}>
            <p> {singlecomment.comment}</p>
-           <p>-- {singlecomment.author} ,{singlecomment.date}</p>  
+           <p>-- {singlecomment.author} ,{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(singlecomment.date)))}</p>  
          
         </li>
         </div>
@@ -46,8 +46,9 @@ renderComments(commentList) {
 renderDish(selectedDish) {
     
     if (selectedDish != null)
+    {console.log('hi, im here')}
     return(
-     
+  
         <Card>
             <CardImg top src={selectedDish.image} alt={selectedDish.name} />
             <CardBody>
@@ -68,6 +69,7 @@ render(){
    
     if (selectedDish != null)
     return(
+        <div className="container">
    
         <div className="row">
              
@@ -84,6 +86,7 @@ render(){
        
           </div>
 
+        </div>
         </div>
     );
 else
