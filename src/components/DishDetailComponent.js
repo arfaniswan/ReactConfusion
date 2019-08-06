@@ -6,16 +6,7 @@ import { Card, CardImg, CardText, CardBody,
 
 class DishDetail extends React.Component{
 
-constructor(props)
-{
 
-    super(props);
-    this.state = {
-        
-    }
-
-
-}
 renderComments(commentList) {
     if (commentList != null)
    return(
