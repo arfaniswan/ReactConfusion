@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { Card, CardImg, CardText, CardBody,
-    CardTitle } from 'reactstrap';
+
+    import { Card, CardImg, CardText, CardBody,
+        CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+    import { Link } from 'react-router-dom';
 
 
 class DishDetail extends React.Component{
 
 
-renderComments(commentList) {
+RenderComments(commentList) {
     if (commentList != null)
    return(
       
@@ -32,9 +34,7 @@ renderComments(commentList) {
 }
 
 
-
-
-renderDish(selectedDish) {
+RenderDish(selectedDish) {
     
     if (selectedDish != null)
     {console.log('hi, im here')}
@@ -56,34 +56,34 @@ renderDish(selectedDish) {
 
 render(){
     
-   const selectedDish= this.props.SelectedDish;
-   
-    if (selectedDish != null)
-    return(
-        <div className="container">
-   
-        <div className="row">
-             
-        <div  className="col-12 col-md-5 m-1">
-        
-      {this.renderDish(selectedDish)}
-        </div>
-        <div  className="col-12 col-md-5 m-1">
-        <h4>Comments:</h4>
-    
-       <ul className="list-unstyled">
-      {this.renderComments(selectedDish.comments)}
-      </ul>
-       
-          </div>
+return (
 
+
+
+    <div className="container">
+    <div className="row">
+        <Breadcrumb>
+
+            <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+            <BreadcrumbItem active>{this.props.dish.name}</BreadcrumbItem>
+        </Breadcrumb>
+        <div className="col-12">
+            <h3>{this.props.dish.name}</h3>
+            <hr />
+        </div>                
+    </div>
+    <div className="row">
+        <div className="col-12 col-md-5 m-1">
+            {this.RenderDish(this.props.dish) }
         </div>
+        <div className="col-12 col-md-5 m-1">
+            {this.RenderComments(this.props.comments)}
         </div>
-    );
-else
-    return(
-        <div></div>
-    );
+    </div>
+    </div>
+
+);
+   
    
 
 
