@@ -9,6 +9,8 @@ import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent.js';
 
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
@@ -91,6 +93,9 @@ class Main extends Component {
      
       <div>
       <Header/>
+
+      <TransitionGroup>
+            <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
         <Switch>
             <Route path='/home' component ={HomePage} ></Route>
             <Route path='/aboutus'component= {() => <About leaders={this.props.leaders}/>} />
@@ -99,6 +104,8 @@ class Main extends Component {
             <Route path='/menu/:dishId' component={DishWithId} />
             <Redirect to="/home"/>
         </Switch>
+        </CSSTransition>
+          </TransitionGroup>
       <Footer/>
       </div>
     );
